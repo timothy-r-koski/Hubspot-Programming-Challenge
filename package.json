@@ -1,0 +1,19 @@
+{
+  "name": "hubspot-programming-challenge",
+  "version": "0.0.1",
+  "description": "Project to solve Hubspot Programming Challenge",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timothy-r-koski/Hubspot-Programming-Challenge.git"
+  },
+  "author": "Tim Koski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timothy-r-koski/Hubspot-Programming-Challenge/issues"
+  },
+  "homepage": "https://github.com/timothy-r-koski/Hubspot-Programming-Challenge#readme"
+}
