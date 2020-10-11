@@ -86,3 +86,6 @@ $RECYCLE.BIN/
 
 # Jetbains
 /.idea/
+
+# Node Modules
+/node_modules/

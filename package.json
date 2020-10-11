@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/timothy-r-koski/Hubspot-Programming-Challenge/issues"
   },
-  "homepage": "https://github.com/timothy-r-koski/Hubspot-Programming-Challenge#readme"
+  "homepage": "https://github.com/timothy-r-koski/Hubspot-Programming-Challenge#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
 }
