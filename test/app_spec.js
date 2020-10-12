@@ -130,39 +130,20 @@ describe('ChallengeApp', () => {
                     }
                 ]
             };
-            const expectedResponse = {
-                "countries": [
-                    {
-                        "attendeeCount": 1,
-                        "attendees": [
-                            "cbrenna@hubspotpartners.com"
-                        ],
-                        "name": "Ireland",
-                        "startDate": "2017-04-29"
-                    },
-                    {
-                        "attendeeCount": 0,
-                        "attendees": [],
-                        "name": "United States",
-                        "startDate": null
-                    },
-                    {
-                        "attendeeCount": 3,
-                        "attendees": [
-                            "omajica@hubspotpartners.com",
-                            "taffelt@hubspotpartners.com",
-                            "tmozie@hubspotpartners.com"
-                        ],
-                        "name": "Spain",
-                        "startDate": "2017-04-28"
-                    }
-                ]
+            const postResponse = {
+                "message": "Results match! Congratulations!"
             };
 
             beforeEach(() => {
                 nock('https://candidate.hubteam.com/')
                     .get('/candidateTest/v3/problem/dataset?userKey=4bcee3a6a2706ec3d5705ef5dd35')
                     .reply(200, getReply);
+                nock('https://candidate.hubteam.com/')
+                    .post(
+                        '/candidateTest/v3/problem/result?userKey=4bcee3a6a2706ec3d5705ef5dd35',
+                        body => !!body.countries
+                    )
+                    .reply(200, postResponse);
             });
 
             afterEach(() => {
@@ -181,15 +162,7 @@ describe('ChallengeApp', () => {
                 chai.request(server)
                     .get('/hubspotProject')
                     .end((err, res) => {
-                        expect(res.body.countries.length).to.equal(3);
-                        done();
-                    });
-            });
-            it('And: response contains the correct number of elements', (done) => {
-                chai.request(server)
-                    .get('/hubspotProject')
-                    .end((err, res) => {
-                        expect(res.body).to.equal(expectedResponse);
+                        expect(JSON.stringify(res.body)).to.eq(JSON.stringify(postResponse));
                         done();
                     });
             });
