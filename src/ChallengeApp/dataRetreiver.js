@@ -4,9 +4,7 @@ const url = "https://candidate.hubteam.com/candidateTest/v3/problem/dataset?user
 const getData = async() => {
     try {
         const response = await fetch(url);
-        const json = await response.json();
-        console.log(json);
-        return json;
+        return await response.json();
     } catch (error) {
         console.log(error);
     }

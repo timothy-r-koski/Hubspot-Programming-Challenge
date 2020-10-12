@@ -10,9 +10,7 @@ const postData = async (data) => {
                 body: JSON.stringify(data),
                 headers: {'Content-Type': 'application/json'},
             });
-        const json = await response.json();
-        console.log(json);
-        return json;
+        return await response.json();
     } catch (error) {
         console.log(error);
     }
