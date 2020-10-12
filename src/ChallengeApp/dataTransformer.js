@@ -4,33 +4,23 @@ const transformData = (data) => {
     if (isEmpty(data)) {
         return "Something is broken";
     }
+    const countries = [];
+
+    data.partners.forEach(partner => {
+        if (!countries.some(country => country.name === partner.country)) {
+            countries.push(
+                {
+                    "attendeeCount": 0,
+                    "attendees": [],
+                    "name": partner.country,
+                    "startDate": null
+                }
+            );
+        }
+    });
+
     return {
-        "countries": [
-            {
-                "attendeeCount": 1,
-                "attendees": [
-                    "cbrenna@hubspotpartners.com"
-                ],
-                "name": "Ireland",
-                "startDate": "2017-04-29"
-            },
-            {
-                "attendeeCount": 0,
-                "attendees": [],
-                "name": "United States",
-                "startDate": null
-            },
-            {
-                "attendeeCount": 3,
-                "attendees": [
-                    "omajica@hubspotpartners.com",
-                    "taffelt@hubspotpartners.com",
-                    "tmozie@hubspotpartners.com"
-                ],
-                "name": "Spain",
-                "startDate": "2017-04-28"
-            }
-        ]
+        "countries": countries
     };
 }
 

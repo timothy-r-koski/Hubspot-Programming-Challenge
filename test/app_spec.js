@@ -160,8 +160,8 @@ describe('ChallengeApp', () => {
           };
 
             beforeEach(() => {
-                nock('http://xkcd.com/')
-                    .get('/info.0.json')
+                nock('https://candidate.hubteam.com/')
+                    .get('/candidateTest/v3/problem/dataset?userKey=4bcee3a6a2706ec3d5705ef5dd35')
                     .reply(200, getReply);
             });
 
@@ -177,11 +177,11 @@ describe('ChallengeApp', () => {
                         done();
                     });
             });
-            it('And: response is mocked post reply', (done) => {
+            it('And: response contains the correct number of elements', (done) => {
                 chai.request(server)
                     .get('/hubspotProject')
                     .end((err, res) => {
-                        expect(JSON.stringify(res.body)).to.equal(JSON.stringify(postReply));
+                        expect(res.body.countries.length).to.equal(3);
                         done();
                     });
             });
