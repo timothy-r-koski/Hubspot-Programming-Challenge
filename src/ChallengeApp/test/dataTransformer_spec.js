@@ -125,9 +125,6 @@ describe('Given: Data Transformer', function () {
         it('Then: returns object that contains an array of correct length', function () {
             expect(transformedData.countries.length).to.equal(3);
         });
-        it('And: returns object that contains an array of correct length', function () {
-            expect(transformedData.countries.length).to.equal(3);
-        });
     });
     describe('When: undefined is passed to the transformer', function () {
         const transformedData = transformData(undefined);
