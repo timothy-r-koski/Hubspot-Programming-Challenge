@@ -89,3 +89,7 @@ $RECYCLE.BIN/
 
 # Node Modules
 /node_modules/
+
+# Babel
+/dist/
+/lib/
